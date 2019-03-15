@@ -42,6 +42,24 @@ var map = new mapboxgl.Map({
 map.once('load',function(){
   console.log('map loaded')
 
+  map.addSource('river-miles',
+    {'type':'geojson',
+     'data':"river_miles.geojson"})
+
+
+  map.addLayer({
+    'id':'river-miles',
+    'source':'river-miles',
+    'type':'symbol',
+     "layout": {
+      "text-field": "{RIVERMILE}",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0.6],
+      "text-anchor": "top",
+    }
+  })
+
+
 
   map.on('click', function(e){
     if (map.getZoom() > 9){
