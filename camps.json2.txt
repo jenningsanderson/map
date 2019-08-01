@@ -1,0 +1,347 @@
+
+
+
+
+
+
+
+
+
+<html lang="en">
+
+<head>
+<title>Query: Campsite Polygons (ID: 0)</title>
+<link href="/arcgis/rest/static/main.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table width="100%" class="userTable">
+ <tr>
+ <td class="titlecell">
+ ArcGIS REST Services Directory
+ </td>
+ <td align="right">
+   
+      
+        <a href="https://grandcanyon.usgs.gov/arcgis/rest/login">Login</a>
+       
+            | <a href="https://grandcanyon.usgs.gov/arcgis/tokens/">Get Token</a>
+                  
+      
+   
+ </td>
+ </tr>
+</table>
+<table width="100%" class="navTable">
+<tr valign="top">
+<td class="breadcrumbs">
+<a href="/arcgis/rest/services">Home</a>
+
+
+
+
+
+
+  &gt; <a href="/arcgis/rest/services">services</a>
+  
+  &gt; <a href="/arcgis/rest/services/Cultural">Cultural</a>
+  
+  &gt; <a href="/arcgis/rest/services/Cultural/CampsiteAtlas_v1022/MapServer">CampsiteAtlas_v1022 (MapServer)</a>
+  
+  &gt; <a href="/arcgis/rest/services/Cultural/CampsiteAtlas_v1022/MapServer/0">Campsite Polygons</a>
+  
+  &gt; <a href="/arcgis/rest/services/Cultural/CampsiteAtlas_v1022/MapServer/0/query"><i>query</i></a>
+  
+</td>
+<td align="right">
+<a href="https://grandcanyon.usgs.gov/arcgis/sdk/rest/02ss/02ss00000057000000.htm" target="_blank">Help</a> | <a href="https://grandcanyon.usgs.gov/arcgis/rest/services/Cultural/CampsiteAtlas_v1022/MapServer/0/query?f=help" target="_blank">API Reference</a>
+</td>
+</tr>
+</table>
+
+
+
+<h2>Query: Campsite Polygons (ID: 0)</h2>
+
+<div class="rbody">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="color:#ff6666"> 
+
+</div>
+
+<form name="sdform" action="/arcgis/rest/services/Cultural/CampsiteAtlas_v1022/MapServer/0/query">
+
+<table class="formTable">
+
+<tr valign="top">
+<td><label for="where">Where:</label></td>
+<td><input type="text" id="where" name="where" value="" size="75"/></td>
+</tr>
+
+<tr valign="top">
+<td><label for="text">Text:</label></td>
+<td><input type="text" id="text" name="text" value=""/></td>
+</tr>
+
+<tr valign="top">
+<td><label for="objectIds">Object IDs:</label></td>
+<td><input type="text" id="objectIds" name="objectIds" value="" size="75"/></td>
+</tr>
+
+<tr valign="top">
+<td><label for="time">Time:</label></td>
+<td><input type="text" id="time" name="time" value="" size="75"/></td>
+</tr>
+
+<tr>
+<td><label for="geometry">Input Geometry:</label></td>
+<td>
+<textarea id="geometry" name="geometry" rows="5" cols="55"></textarea>
+</td>
+</tr>
+
+<tr>
+<td><label for="geometryType">Geometry Type:</label></td>
+<td>
+<select id="geometryType" name="geometryType">
+<option value="esriGeometryEnvelope" >Envelope</option>
+<option value="esriGeometryPoint" >Point</option>
+<option value="esriGeometryPolyline" >Polyline</option>
+<option value="esriGeometryPolygon" >Polygon</option>
+<option value="esriGeometryMultipoint" >Multipoint</option>
+</select>
+</td>
+</tr>
+
+<tr valign="top">
+<td><label for="inSR">Input Spatial Reference:</label></td>
+<td><input type="text" id="inSR" name="inSR" value="" size="75"/></td>
+</tr>
+
+<tr>
+<td><label for="spatialRel">Spatial Relationship:</label></td>
+<td>
+<select id="spatialRel" name="spatialRel">
+<option value="esriSpatialRelIntersects" >Intersects</option>
+<option value="esriSpatialRelContains" >Contains</option>
+<option value="esriSpatialRelCrosses" >Crosses</option>
+<option value="esriSpatialRelEnvelopeIntersects" >Envelope Intersects</option>
+<option value="esriSpatialRelIndexIntersects" >Index Intersects</option>
+<option value="esriSpatialRelOverlaps" >Overlaps</option>
+<option value="esriSpatialRelTouches" >Touches</option>
+<option value="esriSpatialRelWithin" >Within</option>
+<option value="esriSpatialRelRelation" >Relation</option>
+</select>
+</td>
+</tr>
+
+<tr valign="top">
+<td><label for="relationParam">Relation:</label></td>
+<td><input type="text" id="relationParam" name="relationParam" value=""/></td>
+</tr>
+
+<tr valign="top">
+<td><label for="outFields">Out Fields:</label></td>
+<td><input type="text" id="outFields" name="outFields" value="" size="75"/></td>
+</tr>
+
+<tr>
+<td>Return Geometry:</td>
+<td>
+  <label><input type="radio" name="returnGeometry" value="true" checked="true" /> True &nbsp;</label>
+    <label><input type="radio" name="returnGeometry" value="false"   /> False</label>
+</td>
+</tr>
+
+<tr>
+<td>Return True Curves:</td>
+<td>
+  <label><input type="radio" name="returnTrueCurves" value="true"  /> True &nbsp;</label>
+    <label><input type="radio" name="returnTrueCurves" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr valign="top">
+<td><label for="maxAllowableOffset">Max Allowable Offset:</label></td>
+<td><input type="text" id="maxAllowableOffset" name="maxAllowableOffset" value=""/></td>
+</tr>
+
+<tr valign="top">
+<td><label for="geometryPrecision">Geometry Precision:</label></td>
+<td><input type="text" id="geometryPrecision" name="geometryPrecision" value="" /></td>
+</tr>
+
+<tr valign="top">
+<td><label for="outSR">Output Spatial Reference:</label></td>
+<td><input type="text" id="outSR" name="outSR" value="" size="75"/></td>
+</tr>
+
+<tr>
+<td>Return IDs Only:</td>
+<td>
+  <label><input type="radio" name="returnIdsOnly" value="true"  /> True &nbsp;</label>
+  <label><input type="radio" name="returnIdsOnly" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr>
+<td>Return Count Only:</td>
+<td>
+  <label><input type="radio" name="returnCountOnly" value="true"  /> True &nbsp;</label>
+  <label><input type="radio" name="returnCountOnly" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr>
+<td><label for="orderByFields">Order By Fields:</label></td>
+<td><input type="text" id="orderByFields" name="orderByFields" value="" size="50"/></td>
+</tr>
+
+<tr>
+<td><label for="groupByFieldsForStatistics">Group By Fields (For Statistics):</label></td>
+<td><input type="text" id="groupByFieldsForStatistics" name="groupByFieldsForStatistics" value="" size="50"/></td>
+</tr>
+
+<tr>
+<td><label for="outStatistics">Output Statistics:</label></td>
+<td><textarea id="outStatistics" name="outStatistics" rows="5" cols="55"></textarea></td>
+</tr>
+
+<tr>
+<td>ReturnZ:</td>
+<td>
+  <label><input type="radio" name="returnZ" value="true"  /> True &nbsp;</label>
+  <label><input type="radio" name="returnZ" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr>
+<td>ReturnM:</td>
+<td>
+  <label><input type="radio" name="returnM" value="true"  /> True &nbsp;</label>
+    <label><input type="radio" name="returnM" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr valign="top">
+<td><label for="gdbVersion">Geodatabase Version Name:</label></td>
+<td><input type="text" id="gdbVersion" name="gdbVersion" value="" /></td>
+</tr>
+
+<tr>
+<td>Return Distinct Values:</td>
+<td>
+  <label><input type="radio" name="returnDistinctValues" value="true"  /> True &nbsp;</label>
+  <label><input type="radio" name="returnDistinctValues" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr valign="top">
+<td><label for="resultOffset">Result Offset:</label></td>
+<td><input type="text" id="resultOffset" name="resultOffset" value="" /></td>
+</tr>
+
+<tr valign="top">
+<td><label for="resultRecordCount">Result Record Count:</label></td>
+<td><input type="text" id="resultRecordCount" name="resultRecordCount" value="" /></td>
+</tr>
+
+<tr valign="top">
+<td><label for="queryByDistance">Query By Distance:</label></td>
+<td><input type="text" id="queryByDistance" name="queryByDistance" value="" /></td>
+</tr>
+
+<tr>
+<td>Return Extents Only:</td>
+<td>
+  <label><input type="radio" name="returnExtentsOnly" value="true"  /> True &nbsp;</label>
+  <label><input type="radio" name="returnExtentsOnly" value="false" checked="true"  /> False</label>
+</td>
+</tr>
+
+<tr valign="top">
+<td><label for="datumTransformation">Datum Transformation:</label></td>
+<td><input type="text" id="datumTransformation" name="datumTransformation" value="" /></td>
+</tr>
+
+<tr valign="top">
+<td><label for="parameterValues">Parameter Values:</label></td>
+<td><input type="text" id="parameterValues" name="parameterValues" value="" /></td>
+</tr>
+
+<tr valign="top">
+<td><label for="rangeValues">Range Values:</label></td>
+<td><input type="text" id="rangeValues" name="rangeValues" value="" /></td>
+</tr>
+
+<tr>
+<td><label for="f">Format:</label></td>
+<td>
+<select id="f" name="f">
+<option value="html">HTML</option>
+<option value="pjson">JSON</option>
+<option value="amf">AMF</option>
+<option value="kmz">KMZ</option>
+<option value="geojson">GeoJSON</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="left">
+<input type="submit" value="Query (GET)" />
+<input type="submit" onclick="this.form.method = 'post';" value="Query (POST)" />
+</td>
+</tr>
+
+</table>
+
+<input type="hidden" name="__ncforminfo" value="e9DLKaxYZEY-mXMl0TfYY9FaNsCcbqSR74T26LpyuvI1cMe8QmANJ4mJsd7b7wu7IKNuJAcK0FH8nciN0phSRyRjmRXlvftItYfpuKT4LJxEj9GjxKQaF90C9YPTCsnz1eEyHHLy_itg-xTEe05tB5bQq6Frx3dK33CC2ltgzc5U3w9ZasJkxR49EiV7tZgcvRIvuA4u-BQoTUaH6kQfIRkxwKc7gcNvET5BPEDsA1u7QnWEENfdMmaz9XfMQH-MgrFzmSVDmjGCAe91i6q68ZiTc_cu9zvI_NMFYQYqqTYbReJ2gS1Xa8ogjJrT1bpwx7AeRkyMwKPUH0eBitliGfvS41W-VZFX-TadCzEYqAGjUkqDAAy1E6pDOcT2GiRN6-y7UQgxOs4uvMqLaMuvyBIfphBGVbWXqbyPxiIOeAR7SxkBjsEP6CosWT-BNkIGCYZGLFjDGb_7ZJUrDQ7R05dz_Tgo32tq-7Ib6B7utICfpM9AbJooeem568LwSgV2m3IvlyULHarRzohkKgJJGqUECGp5eclMkHbd4IGOpOTd9Wkju8Kb_Se-NoGPGNG5heAqt2GS82bXLHGULR4ZbQZVQeX6R38tNqNAfKpXanmfriz-b9JPaU-7aO84vsEuTC-GEDXAWen_rPh1Nq8LAFEa0bygDMPOodAfn1KMt2940d-pEFJkQg=="/></form>
+
+<script type="text/javascript">
+document.forms.sdform.where.focus();
+</script>
+
+
+
+
+</div>
+
+<br/><br/>
+
+</body>
+
+</html>

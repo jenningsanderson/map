@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Lee's Ferry"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.58706188201904,
+          36.86588820849843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Phantom Ranch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.09582328796387,
+          36.10334731796356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"Pearce Ferry"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.98253202438354,
+          36.124790065889925
+        ]
+      }
+    }
+  ]
+}

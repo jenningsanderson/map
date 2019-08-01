@@ -33,8 +33,8 @@ console.log(styleString)
 
 var map = new mapboxgl.Map({
     container: 'map',
-    zoom: 2,
-    center: [-147.81, 36.93],
+    zoom: 7.87,
+    center: [-112.782, 36.239],
     style: styleString,
     hash: true
 });
@@ -45,6 +45,14 @@ map.once('load',function(){
   map.addSource('river-miles',
     {'type':'geojson',
      'data':"river_miles.geojson"})
+
+ map.addSource('river-rapids',
+       {'type':'geojson',
+        'data':"rapids_4326.geojson"})
+
+  map.addSource('pois',
+       {'type':'geojson',
+        'data':"names.geojson"})
 
 
   map.addLayer({
@@ -58,6 +66,54 @@ map.once('load',function(){
       "text-anchor": "top",
     }
   })
+
+  map.addLayer({
+    'id':'river-rapids',
+    'source':'river-rapids',
+    'type':'symbol',
+     "layout": {
+      "text-field": "{RAPID}",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "purple"
+    },
+    "filter":['!has','highlight']
+  })
+
+  map.addLayer({
+    'id':'river-rapids-highlight',
+    'source':'river-rapids',
+    'type':'symbol',
+     "layout": {
+      "text-field": "{RAPID}",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "red"
+    },
+    "filter":['has','highlight']
+  })
+
+  map.addLayer({
+    'id':'names',
+    'source':'pois',
+    'type':'symbol',
+     "layout": {
+      "text-field": "{Name}",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "lightgreen"
+    },
+  })
+
 
 
 
