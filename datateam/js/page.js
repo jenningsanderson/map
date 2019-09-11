@@ -24,6 +24,8 @@ document.getElementById('dataset-picker').addEventListener('change',function(e){
 
 document.getElementById('year-picker').addEventListener('change',reloadTimeline)
 
+document.getElementById('intensity-variable-picker').addEventListener('change',changeIntensity)
+
 // document.getElementById('step').addEventListener('click',timeline.stepBrush);
 //
 // document.getElementById('Play').addEventListener('click',function(){

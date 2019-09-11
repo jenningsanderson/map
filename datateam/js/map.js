@@ -66,27 +66,10 @@ map.once('load',function(){
 
     new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(`<table>
-                  <tr>
-                    <th>User</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.u}">${p.u}</a>
-                    <span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.u}')">filter</span></td>
-                  </tr>
-                  <tr>
-                    <th>Team</th>
-                    <td>${p.t}</td>
-                  </tr>
-                  <tr>
-                    <th>Changeset</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
-                  </tr>
-                  <tr>
+      .setHTML(tableBeginning(p)+
+                  `<tr>
                     <th>OSM Way: </th>
                     <td><a class="link" target="_blank" href="//openstreetmap.org/way/${p.i}">${p.i}</a></td>
-                  </tr>
-                  <tr>
-                    <th>Object Version </th>
-                    <td>${p.v}</td>
                   </tr>
                   <tr>
                     <th>name=</th>
@@ -105,27 +88,10 @@ map.once('load',function(){
 
     new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(`<table>
-                  <tr>
-                    <th>User</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.u}">${p.u}</a>
-                    <span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.u}')">filter</span></td>
-                  </tr>
-                  <tr>
-                    <th>Team</th>
-                    <td>${p.t}</td>
-                  </tr>
-                  <tr>
-                    <th>Changeset</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
-                  </tr>
-                  <tr>
+      .setHTML(tableBeginning(p)+
+                  `<tr>
                     <th>OSM Way: </th>
                     <td><a class="link" target="_blank" href="//openstreetmap.org/way/${p.i}">${p.i}</a></td>
-                  </tr>
-                  <tr>
-                    <th>Object Version </th>
-                    <td>${p.v}</td>
                   </tr>
                   <tr>
                     <th>name=</th>
@@ -144,31 +110,10 @@ map.once('load',function(){
 
     new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(`<table>
-                  <tr>
-                    <th>Type</th>
-                    <td>Restriction</td>
-                  </tr>
-                  <tr>
-                    <th>User</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.u}">${p.u}
-                    </a><span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.u}')">filter</span></td>
-                  </tr>
-                  <tr>
-                    <th>Team</th>
-                    <td>${p.t}</td>
-                  </tr>
-                  <tr>
-                    <th>Changeset</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
-                  </tr>
-                  <tr>
+      .setHTML(tableBeginning(p)+
+                  `<tr>
                     <th>OSM Relation: </th>
                     <td><a class="link" target="_blank" href="//openstreetmap.org/relation/${p.i}">${p.i}</a></td>
-                  </tr>
-                  <tr>
-                    <th>Object Version </th>
-                    <td>${p.v}</td>
                   </tr>
                 </table>`)
       .addTo(map);
@@ -179,27 +124,10 @@ map.once('load',function(){
 
     new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(`<table>
-                  <tr>
-                    <th>User</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.u}">${p.u}
-                    </a><span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.u}')">filter</span></td>
-                  </tr>
-                  <tr>
-                    <th>Team</th>
-                    <td>${p.t}</td>
-                  </tr>
-                  <tr>
-                    <th>Changeset</th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
-                  </tr>
-                  <tr>
+      .setHTML(tableBeginning(p)+
+                  `<tr>
                     <th>OSM Node: </th>
                     <td><a class="link" target="_blank" href="//openstreetmap.org/node/${p.i}">${p.i}</a></td>
-                  </tr>
-                  <tr>
-                    <th>Object Version </th>
-                    <td>${p.v}</td>
                   </tr>
                   <tr>
                     <th>name=</th>
@@ -212,6 +140,7 @@ map.once('load',function(){
                 </table>`)
       .addTo(map);
   });
+
 });
 
 var timeline = new D3Timeline(function(brushEvent){
@@ -324,7 +253,6 @@ function reloadTimeline(){
       document.getElementById('loading').style.display = 'none';
     }
 
-
   })
 }
 
@@ -356,4 +284,44 @@ function reloadAll(){
     map.removeLayer(layerID)
     map.addLayer(newLayers[layerID])
   })
+
+  var event = new Event('change');
+  document.getElementById('intensity-variable-picker').dispatchEvent(event);
+
 }
+
+function changeIntensity(e){
+  var intensityVar = e.target.value
+  map.setPaintProperty('heatmap-tiny',"heatmap-weight",[
+              "interpolate",
+              ["linear"],
+              ["get", intensityVar],
+              1, 0.1,
+              10000, 1])
+  map.setPaintProperty('heatmap-small',"heatmap-weight",[
+              "interpolate",
+              ["linear"],
+              ["get", intensityVar],
+              1, 0.1,
+              1000, 1])
+  map.setPaintProperty('heatmap-medium',"heatmap-weight",[
+              "interpolate",
+              ["linear"],
+              ["get", intensityVar],
+              1, 0.1,
+              100, 1])
+  map.setPaintProperty('heatmap-large',"heatmap-weight",[
+              "interpolate",
+              ["linear"],
+              ["get", intensityVar],
+              1, 0.1,
+              10, 3])
+
+}
+
+/*
+
+TODO: We a dropdown menu that can fire these off will be great...
+
+
+*/

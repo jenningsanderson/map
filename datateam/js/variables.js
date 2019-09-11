@@ -3,16 +3,14 @@
 //    'z5' : {'min':1, 'max':2  },
 //}
 
-var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber'];
+// var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber'];
 
-COMPANIES = ['mapbox','grab','amazon'];
+COMPANIES = ['mapbox','grab','amazon','telenav'];
 
 var COMPANY = "grab";
 
 var LAYERS  = ["heatmap-tiny","heatmap-small","heatmap-medium","heatmap-large","line-features","fill-features","point-features","turn-restrictions"]
 var FEATURE_LAYERS  = ["line-features","fill-features","point-features","turn-restrictions"]
-
-var intensity_variable = 'e'
 
 var animation, playing;
 
@@ -27,8 +25,8 @@ var tinyScaleHeatmapPaintStyle = {
     "heatmap-weight": [
         "interpolate",
         ["linear"],
-        ["get", intensity_variable],
-        1, 0.2,
+        ["get", 'e'],
+        1, 0.1,
         10000, 2
     ],
 
@@ -62,9 +60,9 @@ var smallScaleHeatmapPaintStyle =   {
     "heatmap-weight": [
         "interpolate",
         ["linear"],
-        ["get", intensity_variable],
-        1, 0.5,
-        10000, 1
+        ["get", 'e'],
+        1, 0.1,
+        1000, 1
     ],
     //Increase the heatmap color weight weight by zoom level
     //heatmap-intensity is a multiplier on top of heatmap-weight
@@ -105,9 +103,9 @@ var mediumScaleHeatmapPaintStyle = {
         "heatmap-weight": [
             "interpolate",
             ["linear"],
-            ["get", intensity_variable],
-            1, 1,
-            100, 2
+            ["get", 'e'],
+            1, 0.1,
+            100, 1
         ],
         // Increase the heatmap color weight weight by zoom level
         // heatmap-intensity is a multiplier on top of heatmap-weight
@@ -144,15 +142,14 @@ var mediumScaleHeatmapPaintStyle = {
         "heatmap-opacity": 0.9
     }
 
-
 var largeScaleHeatmapPaintStyle = {
         // Increase the heatmap weight based on frequency and property magnitude
         "heatmap-weight": [
             "interpolate",
             ["linear"],
-            ["get", intensity_variable],
-            1, 1,
-            10, 5
+            ["get", 'e'],
+            1, 0.1,
+            10, 3
         ],
         // Increase the heatmap color weight weight by zoom level
         // heatmap-intensity is a multiplier on top of heatmap-weight
@@ -195,7 +192,6 @@ var largeScaleHeatmapPaintStyle = {
         ],
     }
 
-
 var pointFeaturesPaintStyle = {
   'circle-color':'yellow',
   'circle-opacity':0.8,
@@ -203,7 +199,7 @@ var pointFeaturesPaintStyle = {
     'interpolate',
     ['linear'],
     ['zoom'],
-    13, 1,
+    12, 1,
     17, 6
   ]
 }
@@ -218,9 +214,9 @@ var lineFeaturesPaintStyle = {
   'line-opacity':0.9,
   'line-width':[
     'interpolate',
-    ['linear'],
+    ['exponential',2],
     ['zoom'],
-    14, 2,
+    12, 1,
     17, 7
   ]
 }
@@ -231,7 +227,7 @@ var trFeaturesPaintStyle = {
     'interpolate',
     ['linear'],
     ['zoom'],
-    13, 2,
+    12, 2,
     17, 7
   ]
 }
@@ -248,7 +244,7 @@ function getAllLayers(){
         ['<=','d',endDateInt]
       ],
       "minzoom": 8,
-      "maxzoom": 14,
+      "maxzoom": 12,
       "paint": largeScaleHeatmapPaintStyle
     },
 
@@ -299,7 +295,7 @@ function getAllLayers(){
       "type": "line",
       'source': COMPANY+'-source',
       'source-layer':'individualFeatures',
-      "minzoom": 13,
+      "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
         ['>','d',startDateInt],
@@ -317,7 +313,7 @@ function getAllLayers(){
       "type": "fill",
       'source': COMPANY+'-source',
       'source-layer':'individualFeatures',
-      "minzoom": 13,
+      "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
         ['>','d',startDateInt],
@@ -332,7 +328,7 @@ function getAllLayers(){
       "type": "circle",
       'source': COMPANY+'-source',
       'source-layer':'individualFeatures',
-      "minzoom": 13,
+      "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
         ['>','d',startDateInt],
@@ -348,7 +344,7 @@ function getAllLayers(){
       "type": "circle",
       'source': COMPANY+'-source',
       'source-layer':'individualFeatures',
-      "minzoom": 13,
+      "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
         ['>','d',startDateInt],
@@ -359,4 +355,29 @@ function getAllLayers(){
       "paint": trFeaturesPaintStyle,
     }
   }
+}
+
+function tableBeginning(p){
+  return `<table>
+  <tr>
+    <th>User</th>
+    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.u}">${p.u}</a>
+    <span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.u}')">filter</span></td>
+  </tr>
+  <tr>
+    <th>Team</th>
+    <td>${p.t}</td>
+  </tr>
+  <tr>
+    <th>Changeset</th>
+    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td>${new Date(p.d*1000).toLocaleString('en-US', { timeZone: 'UTC' })}
+  </td>
+  <tr>
+    <th>Object Version </th>
+    <td>${p.v}</td>
+  </tr>`
 }
