@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-21807469-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-21807469-1');
+</script>
+
+  <meta charset='utf-8' />
+  <title></title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+
+  <link href="https://api.mapbox.com/mapbox-assembly/v0.23.0/assembly.min.css" rel="stylesheet">
+  <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.23.0/assembly.js"></script>
+
+  <script src="js/d3.v4.min.js" type="text/javascript" ></script>
+  <script src="js/d3-timeline.js" type="text/javascript" ></script>
+
+  <link href="page.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div id="loading"
+     style="z-index:100; position:fixed; top:0; width:100%; height:100vh;"
+     class='loading align-center pt60 bg-lighten75'></div>
+
+<section class="grid grid--gut12">
+  <div id="main" class="col col--12">
+
+    <div id="map-header" class="flex-parent">
+      <div class='flex-child px12 py6'>
+        <p class="py6">Select a Data Team:</p>
+        <div class='select-container'>
+          <select id="dataset-picker" class='select'>
+              <option value="grab">Grab</option>
+              <option value="mapbox">Mapbox</option>
+              <!-- <option value="telenav">Telenav</option> -->
+              <!-- <option value="devseed">Development Seed</option> -->
+              <!-- <option value="apple">Apple</option> -->
+              <!-- <option value="facebook">Facebook</option> -->
+              <!-- <option value="microsoft">Microsoft</option> -->
+              <!-- <option value="kaart">Kaart</option> -->
+              <!-- <option value="uber">Uber</option> -->
+              <option value="amazon">Amazon</option>
+          </select>
+          <div class='select-arrow'></div>
+        </div>
+      </div>
+
+      <div class="flex-child">
+        <svg class="flex-child" id='timeline-svg' width="900" height="130"></svg>
+      </div>
+
+      <div id='animation-controls' class="flex-child round px6 py6 mx12">
+        <p>Show Years: </p>
+
+        <div class='select-container'>
+          <select id="year-picker" class='select'>
+              <option value="All">All</option>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+          </select>
+          <div class='select-arrow'></div>
+        </div>
+      </div>
+
+      <!-- <div id='animation-controls' class="flex-child round px6 py6">
+        <p>Animation Controls</p>
+        <label for="stepVal" class="txt-s">Step: </label>
+        <input id="stepVal" name="stepVal" type='text' class='bg-color--white input input--s unround inline w60' value="30"/><span class='txt-s'>Days</span>
+        <div class="align-center py6 ">
+          <button id="Play" class='btn round'>Play</button>
+          <button id="step" class='btn round btn--red'>Step</button>
+        </div>
+      </div> -->
+    </div>
+
+    <button id="show-help" style="display:none;" class="btn round">Instructions / About</button>
+
+    <div id='object-filters'>
+
+    </div>
+
+    <div id="map"></div>
+
+  </div>
+
+  <div id="sidebar" class="col col--2 prose txt-s pt12 pr12" style="display:none;">
+
+
+    <h3 class="txt-h3 align-center">Corporate Editing Heatmap</h3>
+
+    <button id="help" class="fr btn round">Collapse</button>
+    <h4 class="txt-h4">What Does This Show?</h4>
+    <p>Where and when users associated with different teams have edited the map.<p>
+    <p>Edits are counted from <a class="link" href="//osmlab.github.io/osm-qa-tiles">osm-qa-tiles</a>, which means the following edit types are not reflected on this page:</p>
+    <ul class="txt-ul">
+        <li class="txt-li">Edits to any previous version of an object</li>
+        <li class="txt-li">Deletions</li>
+        <li class="txt-li">Edits to nodes w/o tags (i.e. moving a node in a way and not editing the way itself)</li>
+        <li class="txt-li">Turn restrictions &amp; relations with abstract geometry representations</li>
+    </ul>
+    <p>To this end, this visualization is not an exact record of all editing activity, but a decent approximation of relative editing activity.</p>
+
+    <h6 class="txt-h6">Interactivity</h6>
+    <ol class="txt-ol">
+      <li class='txt-li'><p class='txt'>Select the team to visualize in the top left (default: <span class="txt-kbd">Mapbox</span>)</p></li>
+
+      <li class='txt-li'><p class='txt'>Clicking and dragging on the graph at the top will filter the map to show only the edits occuring in that time-range.</p></li>
+
+      <li class='txt-li'><p class='txt'>Choose a specific year in the <span class="txt-kbd">Show Years:</span> dropdown menu to zoom the timeline to just that year.</p></li>
+      <li><p>Clicking <span class="btn btn--s btn--red txt-kbd">Step</span> will progress the selected time range at the given <span class="txt-kbd">step</span> value (in days, defaults to 30).</p></li>
+      <li><p>Clicking <span class="btn btn--s btn--blue txt-kbd">Play</span> will step once per second until you click <span class="btn btn--s btn--blue txt-kbd">Stop</span></p></li>
+    </ol>
+
+    <h6 class="txt-h6">How this was built?</h6>
+    <a class="link" target="_blank" href="//github.com/jenningsanderson/data-team-edits">View on Github</a></p>
+
+    <p class="txt-s">Built with <a class="link" href="//github.com/mapbox/">Mapbox</a> tools, <a class="link" target="_blank" href="//d3js.org">d3.js, </a>, Map Data &copy <a class="link" href="https://www.openstreetmap.org/about"> OSM Contributors</a>. <br></p>
+
+
+  </div>
+</section>
+
+<!-- And kick off the page here... -->
+<script src="js/variables.js"></script>
+<script src="js/map.js"></script>
+<script src="js/page.js"></script>
+
+</body>
+</html>
