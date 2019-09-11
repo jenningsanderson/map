@@ -1,16 +1,12 @@
-//    'z10': {'min':4, 'max':7  },
-//    'z8' : {'min':3, 'max':4  },
-//    'z5' : {'min':1, 'max':2  },
-//}
-
 // var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber'];
 
 COMPANIES = ['mapbox','grab','amazon','telenav'];
 
 var COMPANY = "grab";
 
-var LAYERS  = ["heatmap-tiny","heatmap-small","heatmap-medium","heatmap-large","line-features","fill-features","point-features","turn-restrictions"]
 var FEATURE_LAYERS  = ["line-features","fill-features","point-features","turn-restrictions"]
+var HEATMAP_LAYERS  = ["heatmap-tiny","heatmap-small","heatmap-medium","heatmap-large"]
+var LAYERS  = HEATMAP_LAYERS.concat(FEATURE_LAYERS)
 
 var animation, playing;
 

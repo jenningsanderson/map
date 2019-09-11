@@ -292,6 +292,24 @@ function reloadAll(){
 
 function changeIntensity(e){
   var intensityVar = e.target.value
+
+  HEATMAP_LAYERS.forEach(function(layerID){
+    var f = map.getFilter(layerID)
+    var idx;
+    for(var i=0; i<f.length; i++){
+      if( (f[i][1]=="b") || (f[i][1]=="km") || (f[i][1]=="e") ){
+        idx=i;
+      }
+    }
+
+    if(idx){
+      f[idx] = ['>',intensityVar,0]
+    }else{
+      f.push( ['>',intensityVar,0] )
+    }
+    map.setFilter(layerID,f)
+  })
+
   map.setPaintProperty('heatmap-tiny',"heatmap-weight",[
               "interpolate",
               ["linear"],
