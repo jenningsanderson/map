@@ -45,8 +45,8 @@ var tinyScaleHeatmapPaintStyle = {
         "interpolate",
         ["linear"],
         ["zoom"],
-        1, 3,
-        3, 6
+        1, 2,
+        3, 4
     ],
     "heatmap-opacity": 1
 }
@@ -131,8 +131,8 @@ var mediumScaleHeatmapPaintStyle = {
             "interpolate",
             ["linear"],
             ["zoom"],
-            5, 4,
-            8, 15
+            5, 3,
+            8, 8
         ],
         // Transition from heatmap to circle layer by zoom level
         "heatmap-opacity": 0.9
@@ -149,13 +149,14 @@ var largeScaleHeatmapPaintStyle = {
         ],
         // Increase the heatmap color weight weight by zoom level
         // heatmap-intensity is a multiplier on top of heatmap-weight
-        "heatmap-intensity": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            8, 1,
-            14, 2
-        ],
+        "heatmap-intensity": 1,
+        //[
+        //     "interpolate",
+        //     ["linear"],
+        //     ["zoom"],
+        //     8, 1,
+        //     12, 1
+        // ],
         // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
         // Begin color ramp at 0-stop with a 0-transparancy color
         // to create a blur-like effect.
@@ -175,8 +176,8 @@ var largeScaleHeatmapPaintStyle = {
             "interpolate",
             ["linear"],
             ["zoom"],
-            8, 10,
-            14, 80
+            8, 4,
+            12, 50
         ],
         // Transition from heatmap to circle layer by zoom level
         "heatmap-opacity": [
@@ -184,7 +185,7 @@ var largeScaleHeatmapPaintStyle = {
             ["linear"],
             ["zoom"],
             8, 1,
-            14, 0.25
+            12, 0.5
         ],
     }
 
