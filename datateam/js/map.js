@@ -163,8 +163,8 @@ map.once('load',function(){
                     <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
                   </tr>
                   <tr>
-                    <th>OSM Node: </th>
-                    <td><a class="link" target="_blank" href="//openstreetmap.org/node/${p.i}">${p.i}</a></td>
+                    <th>OSM Relation: </th>
+                    <td><a class="link" target="_blank" href="//openstreetmap.org/relation/${p.i}">${p.i}</a></td>
                   </tr>
                   <tr>
                     <th>Object Version </th>
