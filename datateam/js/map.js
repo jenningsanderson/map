@@ -1,3 +1,16 @@
+let urlParams = new URLSearchParams(window.location.search);
+
+let style = urlParams.get('style');
+var styleString = "mapbox://styles/mapbox/" + ( (style==null)? "dark-v9" : style )
+
+// A bit of a dirty secret to see other companies that aren't listed.
+let company = urlParams.get('company');
+COMPANY = (company==null)? "grab" : company
+if (COMPANIES.indexOf(COMPANY)<0){
+  COMPANIES.push(company)
+}
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.PS-j7fRK3HGU7IE8rbLT9A';
 
 var map = new mapboxgl.Map({
@@ -6,7 +19,7 @@ var map = new mapboxgl.Map({
     maxZoom:16.99,
     minZoom:1,
     center: [-82.9609, 42.3089],
-    style: 'mapbox://styles/mapbox/dark-v9',
+    style: styleString,
     hash: true
 });
 
@@ -24,10 +37,10 @@ makePath();
 map.once('load',function(){
 
   // This is for all the companies
-  COMPANIES.forEach(function(COMPANY){
-      map.addSource(COMPANY+"-source",{
+  COMPANIES.forEach(function(comp){
+      map.addSource(comp+"-source",{
           "type":"vector",
-          "url" :"mapbox://jenningsanderson."+COMPANY+"-corp-edits-v2"
+          "url" :"mapbox://jenningsanderson."+comp+"-corp-edits-v2"
       })
   });
 
