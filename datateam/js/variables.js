@@ -1,6 +1,6 @@
-// var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber'];
+var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber'];
 
-COMPANIES = ['mapbox','grab','amazon','telenav'];
+// COMPANIES = ['mapbox','grab','amazon','telenav'];
 
 var COMPANY = "grab";
 
@@ -237,8 +237,8 @@ function getAllLayers(){
       'source': COMPANY+'-source',
       'source-layer':'dailyPointSummaries',
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt]
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt]
       ],
       "minzoom": 8,
       "maxzoom": 12,
@@ -251,8 +251,8 @@ function getAllLayers(){
       'source': COMPANY+'-source',
       'source-layer':'z10',
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt]
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt]
       ],
       "minzoom": 5,
       "maxzoom": 8,
@@ -265,8 +265,8 @@ function getAllLayers(){
       'source': COMPANY+'-source',
       'source-layer':'z8',
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt]
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt]
       ],
       "minzoom": 3,
       "maxzoom": 5,
@@ -279,8 +279,8 @@ function getAllLayers(){
       'source': COMPANY+'-source',
       'source-layer':'z5',
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt]
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt]
       ],
       "minzoom": 1,
       "maxzoom": 3,
@@ -291,12 +291,12 @@ function getAllLayers(){
       "id": "line-features",
       "type": "line",
       'source': COMPANY+'-source',
-      'source-layer':'individualFeatures',
+      'source-layer':'objects',
       "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt],
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt],
         ['==','$type','LineString']
       ],
       "layout":{
@@ -309,12 +309,12 @@ function getAllLayers(){
       "id": "fill-features",
       "type": "fill",
       'source': COMPANY+'-source',
-      'source-layer':'individualFeatures',
+      'source-layer':'objects',
       "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt],
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt],
         ['==','$type','Polygon']
       ],
       "paint":fillFeaturesPaintStyle
@@ -324,12 +324,12 @@ function getAllLayers(){
       "id": "point-features",
       "type": "circle",
       'source': COMPANY+'-source',
-      'source-layer':'individualFeatures',
+      'source-layer':'objects',
       "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt],
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt],
         ['==','$type','Point'],
         ['!has','r']
       ],
@@ -340,12 +340,12 @@ function getAllLayers(){
       "id": "turn-restrictions",
       "type": "circle",
       'source': COMPANY+'-source',
-      'source-layer':'individualFeatures',
+      'source-layer':'objects',
       "minzoom": 12,
       "maxzoom": 17,
       'filter':['all',
-        ['>','d',startDateInt],
-        ['<=','d',endDateInt],
+        ['>','t',startDateInt],
+        ['<=','t',endDateInt],
         ['==','$type','Point'],
         ['has','r']
       ],
@@ -358,8 +358,8 @@ function tableBeginning(p){
   return `<table>
   <tr>
     <th>User</th>
-    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.u}">${p.u}</a>
-    <span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.u}')">filter</span></td>
+    <td><a class="link" target="_blank" href="//openstreetmap.org/user/${p.h}">${p.h}</a>
+    <span class="ml6 btn btn--s cursor-pointer" onclick="filterForUser('${p.h}')">filter</span></td>
   </tr>
   <tr>
     <th>Team</th>
@@ -367,11 +367,11 @@ function tableBeginning(p){
   </tr>
   <tr>
     <th>Changeset</th>
-    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p.c}">${p.c}</a></td>
+    <td><a class="link" target="_blank" href="//openstreetmap.org/changeset/${p['@c']}">${p['@c']}</a></td>
   </tr>
   <tr>
     <th>Date</th>
-    <td>${new Date(p.d*1000).toLocaleString('en-US', { timeZone: 'UTC' })}
+    <td>${new Date(p.t*1000).toLocaleString('en-US', { timeZone: 'UTC' })}
   </td>
   <tr>
     <th>Object Version </th>

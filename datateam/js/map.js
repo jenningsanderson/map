@@ -54,6 +54,111 @@ map.once('load',function(){
   //   })
   // });
 
+
+  /*
+
+    NON CORPORATE STUFF
+
+  */
+
+  //Jennings breaking it here:
+
+  map.addSource('nonCorp',{
+      type: 'vector',
+      tiles: [
+        'http://localhost:4000/noncorp-eastern_thailand.mbtiles/{z}/{x}/{y}.pbf'
+      ]
+    })
+
+  map.addLayer({
+    "id": "line-features-nonCorp",
+    "type": "line",
+    'source': 'nonCorp',
+    'source-layer':'noncorp',
+    "minzoom": 12,
+    "maxzoom": 17,
+    'filter':['all',
+      ['>','t',0],
+      ['<=','t',endDateInt],
+      ['==','$type','LineString']
+    ],
+    "layout":{
+      'line-cap':"round"
+    },
+    "paint":  {
+      'line-color':'pink',
+      'line-opacity':0.8,
+      'line-width':[
+        'interpolate',
+        ['exponential',2],
+        ['zoom'],
+        12, 1,
+        17, 7
+      ]
+    }
+  })
+
+  // map.addLayer({
+  //   "id": "fill-features-nonCorp",
+  //   "type": "fill",
+  //   'source': 'nonCorp',
+  //   'source-layer':'noncorp',
+  //   "minzoom": 12,
+  //   "maxzoom": 17,
+  //   'filter':['all',
+  //     ['>','d',0],
+  //     ['<=','d',endDateInt],
+  //     ['==','$type','Polygon']
+  //   ],
+  //   "paint": {
+  //     'fill-color':'orange',
+  //     'fill-opacity':0.75
+  //   }
+  // })
+
+  map.addLayer({
+    "id": "point-features-nonCorp",
+    "type": "circle",
+    'source': 'nonCorp',
+    'source-layer':'noncorp',
+    "minzoom": 12,
+    "maxzoom": 17,
+    'filter':['all',
+      ['>','t',0],
+      ['<=','t',endDateInt],
+      ['==','$type','Point'],
+      ['!has','r']
+    ],
+    "paint":  {
+      'circle-color':'pink',
+      'circle-opacity':0.8,
+      'circle-radius':[
+        'interpolate',
+        ['linear'],
+        ['zoom'],
+        12, 1,
+        17, 6
+      ]
+    }
+  })
+
+  map.on('click', 'line-features-nonCorp', function (e) {
+    var p = e.features[0].properties;
+
+    new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(JSON.stringify(p))
+      .addTo(map);
+  });
+
+
+
+  /*
+    END Breaking changes
+  */
+
+
+
   var theseLayers = getAllLayers()
 
   LAYERS.forEach(function(layerID){
@@ -163,14 +268,19 @@ var timeline = new D3Timeline(function(brushEvent){
                     LAYERS.forEach(function(layerID){
                       updateTimeFilter(layerID);
                     })
+
+                    updateTimeFilter('point-features-nonCorp')
+                    updateTimeFilter('line-features-nonCorp')
+                    // updateTimeFilter('fill-features-nonCorp')
+
 })
 
 function updateTimeFilter(layerID){
   var f = map.getFilter(layerID)
   for(var i=0; i<f.length; i++){
-    if(f[i][1]=="d" && f[i][0]=='>'){
+    if(f[i][1]=="t" && f[i][0]=='>'){
       f[i][2] = startDateInt
-    }else if(f[i][1]=="d" && f[i][0]=='<='){
+    }else if(f[i][1]=="t" && f[i][0]=='<='){
       f[i][2] = endDateInt
     }
   }
@@ -183,15 +293,15 @@ function updateUserFilters(){
     FEATURE_LAYERS.forEach(function(layerID){
       var f = map.getFilter(layerID)
       for(var i=0; i<f.length; i++){
-        if(f[i][1]=="u" && f[i][0]=='in'){
+        if(f[i][1]=="h" && f[i][0]=='in'){
           idx=i;
         }
       }
 
       if(idx<0){
-        f.push( ["in","u"].concat(selectedUsers) )
+        f.push( ["in","h"].concat(selectedUsers) )
       }else{
-        f[i] = ["in","u"].concat(selectedUsers)
+        f[i] = ["in","h"].concat(selectedUsers)
       }
       map.setFilter(layerID,f)
     })
@@ -201,7 +311,7 @@ function updateUserFilters(){
       var f = map.getFilter(layerID)
       var idx;
       for(var i=0; i<f.length; i++){
-        if(f[i][1]=="u" && f[i][0]=='in'){
+        if(f[i][1]=="h" && f[i][0]=='in'){
           idx=i
         }
       }
