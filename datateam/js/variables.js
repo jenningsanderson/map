@@ -363,7 +363,7 @@ function tableBeginning(p){
   </tr>
   <tr>
     <th>Team</th>
-    <td>${p.t}</td>
+    <td>${p.c}</td>
   </tr>
   <tr>
     <th>Changeset</th>
