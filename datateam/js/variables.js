@@ -1,4 +1,4 @@
-var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber'];
+var COMPANIES = ['mapbox','telenav','facebook','microsoft','kaart','apple','devseed','grab','amazon','uber','digitalegypt','lightcyphers'];
 
 // COMPANIES = ['mapbox','grab','amazon','telenav'];
 
