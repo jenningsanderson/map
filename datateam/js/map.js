@@ -217,7 +217,7 @@ map.once('load',function(){
                   </tr>
                   <tr>
                     <th>highway=</th>
-                    <td>${p.hw}</td>
+                    <td>${p.h}</td>
                   </tr>
                 </table>`)
       .addTo(map);
@@ -253,7 +253,7 @@ map.once('load',function(){
                   </tr>
                   <tr>
                     <th>highway=</th>
-                    <td>${p.hw}</td>
+                    <td>${p.h}</td>
                   </tr>
                 </table>`)
       .addTo(map);
