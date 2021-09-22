@@ -117,6 +117,86 @@
 			}
 		})
 
+		map.addLayer({
+			'id':'allowed_yearlong',
+			'type':'fill',
+			'source':{
+				'type':'geojson',
+				'data':'morrell/snowmobile_allowed.geojson'
+			},
+			'layout':{
+				'visibility':'visible'
+			},
+			'paint':{
+				'fill-color':'green',
+				'fill-opacity':0.7
+			}
+		})
+
+		map.addLayer({
+			'id':'wilderness',
+			'type':'fill',
+			'source':{
+				'type':'geojson',
+				'data':'morrell/wilderness.geojson'
+			},
+			'layout':{
+				'visibility':'visible'
+			},
+			'paint':{
+				'fill-color':'orangered',
+				'fill-opacity':0.7
+			}
+		})
+
+		map.addLayer({
+			'id':'yearlong_restricted',
+			'type':'fill',
+			'source':{
+				'type':'geojson',
+				'data':'morrell/yearlong_snowmobile_restricted.geojson'
+			},
+			'layout':{
+				'visibility':'visible'
+			},
+			'paint':{
+				'fill-color':'red',
+				'fill-opacity':0.7
+			}
+		})
+
+		map.addLayer({
+			'id':'aoi',
+			'type':'fill',
+			'source':{
+				'type':'geojson',
+				'data':'morrell/area_of_interest.geojson'
+			},
+			'layout':{
+				'visibility':'visible'
+			},
+			'paint':{
+				'fill-color':'pink',
+				'fill-opacity':0.7
+			}
+		})
+		map.addLayer({
+			'id':'morrell_road',
+			'type':'fill',
+			'source':{
+				'type':'geojson',
+				'data':'morrell/FS_4365.geojson'
+			},
+			'layout':{
+				'visibility':'visible'
+			},
+			'paint':{
+				'fill-color':'lightgreen',
+				'fill-opacity':0.7
+			}
+		})
+
+
 		 map.addLayer({
 		 	'id':'bbh_aerial',
 		 	'type':'raster',
