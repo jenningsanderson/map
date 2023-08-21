@@ -38,7 +38,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.851220633626006,-123.13360581685568],[45.010184464991845,-122.83486079961531]]);
+        }).fitBounds([[44.8568403401782,-123.17489963134365],[45.00943983473054,-122.88820168056331]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -62,37 +62,48 @@
         function pop_central_business_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.ZNP</th>\
+                        <td>' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.AREA</th>\
+                        <td>' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.Acres</th>\
+                        <td>' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Length</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Area</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNP</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZoneDesc</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNPcodeURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ColorURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -130,37 +141,48 @@
         function pop_retail_commercial_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.ZNP</th>\
+                        <td>' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.AREA</th>\
+                        <td>' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.Acres</th>\
+                        <td>' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Length</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Area</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNP</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZoneDesc</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNPcodeURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ColorURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -198,37 +220,48 @@
         function pop_neighborhood_hub_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.ZNP</th>\
+                        <td>' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.AREA</th>\
+                        <td>' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.Acres</th>\
+                        <td>' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Length</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Area</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNP</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZoneDesc</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNPcodeURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ColorURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -266,37 +299,48 @@
         function pop_general_commercial_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.ZNP</th>\
+                        <td>' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.AREA</th>\
+                        <td>' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.Acres</th>\
+                        <td>' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Length</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Area</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNP</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZoneDesc</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNPcodeURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ColorURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -334,37 +378,48 @@
         function pop_mixed_use_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.ZNP</th>\
+                        <td>' + (feature.properties['Zoning.ZNP'] !== null ? autolinker.link(feature.properties['Zoning.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.AREA</th>\
+                        <td>' + (feature.properties['Zoning.AREA'] !== null ? autolinker.link(feature.properties['Zoning.AREA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.Acres</th>\
+                        <td>' + (feature.properties['Zoning.Acres'] !== null ? autolinker.link(feature.properties['Zoning.Acres'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Length</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Length'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Length'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning.SHAPE_Area</th>\
+                        <td>' + (feature.properties['Zoning.SHAPE_Area'] !== null ? autolinker.link(feature.properties['Zoning.SHAPE_Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.OBJECTID</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.OBJECTID'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.OBJECTID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNP</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNP'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZoneDesc</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZoneDesc'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZoneDesc'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ZNPcodeURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ZNPcodeURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Zoning_Chapter_URLs.ColorURL</th>\
+                        <td>' + (feature.properties['Zoning_Chapter_URLs.ColorURL'] !== null ? autolinker.link(feature.properties['Zoning_Chapter_URLs.ColorURL'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
